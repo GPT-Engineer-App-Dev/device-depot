@@ -1,7 +1,15 @@
-import { Box, Container, VStack, Text, Image, Grid, GridItem, Heading, Link, Flex, Spacer, HStack, Button } from "@chakra-ui/react";
+import { Box, Container, VStack, Text, Image, Grid, GridItem, Heading, Link, Flex, Spacer, HStack, Button, Input, InputGroup, InputRightElement } from "@chakra-ui/react";
 import { FaFacebook, FaTwitter, FaInstagram } from "react-icons/fa";
+import { SearchIcon } from "@chakra-ui/icons";
+import { useState } from "react";
 
 const Index = () => {
+  const [searchQuery, setSearchQuery] = useState("");
+
+  const handleSearchChange = (event) => {
+    setSearchQuery(event.target.value);
+  };
+
   return (
     <Box>
       {/* Navigation Bar */}
@@ -14,6 +22,18 @@ const Index = () => {
             <Link href="#">Products</Link>
             <Link href="#">About Us</Link>
             <Link href="#">Contact Us</Link>
+            <InputGroup maxW="300px" ml={4}>
+              <Input
+                placeholder="Search products..."
+                value={searchQuery}
+                onChange={handleSearchChange}
+                bg="white"
+                color="black"
+              />
+              <InputRightElement>
+                <SearchIcon color="gray.500" />
+              </InputRightElement>
+            </InputGroup>
           </HStack>
         </Flex>
       </Box>
